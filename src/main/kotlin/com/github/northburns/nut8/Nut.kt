@@ -3,13 +3,14 @@
 package com.github.northburns.nut8
 
 import java.io.File
-import java.lang.ProcessBuilder.Redirect.*
+import java.lang.ProcessBuilder.Redirect.INHERIT
 
 fun main(vararg args: String) {
     println("Compressing and writing file.")
     inputFile("alastalon_salissa.txt")
             .let(::compress)
             .let { File("nut.txt").writeText(it) }
+
     println("Running the provided validator")
     ProcessBuilder("./downloads/alastalo_validator","nut.txt")
             .redirectOutput(INHERIT)

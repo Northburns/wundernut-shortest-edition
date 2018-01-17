@@ -21,3 +21,21 @@ Run with this command, solution is then printed and saved to file `nut.txt`:
 * The build script downloads the needed resources from the 
 [Wundernut 8's GitHub repo](https://github.com/wunderdogsw/wunderpahkina-vol8).
   * It only downloads the linux validator, hence the requiremnt 
+
+## Solution
+
+See [Solution.kt](src/main/kotlin/com/github/northburns/nut8/Solution.kt)
+for the beef.
+
+## Result
+
+This is the result of the validator.
+
+```
+All words found:    [✓]
+Lines max 80 chars: [✓]
+21245 lines
+```
+
+My final result is `21245` rows. 
+The 80 character line length seems to have pushed the line count up :smile:
