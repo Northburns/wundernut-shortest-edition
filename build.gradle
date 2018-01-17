@@ -1,0 +1,46 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.2.20"
+    id "de.undercouch.download" version "3.3.0"
+}
+apply plugin: 'application'
+
+mainClassName = "com.github.northburns.nut8.Nut"
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "org.jetbrains.kotlin:kotlin-reflect"
+    testCompile "io.kotlintest:kotlintest:2.0.7"
+}
+
+def downloadLoc = "${project.projectDir}/downloads"
+// After build script evaluation, download the nut resources.
+afterEvaluate {
+    download {
+        def content = 'https://raw.githubusercontent.com/wunderdogsw/wunderpahkina-vol8/master'
+        src([
+                "$content/test_input.txt",
+                "$content/test_output.txt",
+                "$content/alastalon_salissa.txt",
+                "$content/validators/validator_linux.zip"
+        ])
+        dest downloadLoc
+        overwrite false
+    }
+    copy {
+        from zipTree("$downloadLoc/validator_linux.zip").files
+        into downloadLoc
+    }
+}
+sourceSets {
+    main.resources.srcDirs += downloadLoc
+}

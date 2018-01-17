@@ -143,3 +143,7 @@ modules.xml
 .idea/
 *.ipr
 
+# Downloads
+downloads
+# Don't commit the solution:
+nut.txt
