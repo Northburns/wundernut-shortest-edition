@@ -39,3 +39,5 @@ Lines max 80 chars: [✓]
 
 My final result is `21245` rows. 
 The 80 character line length seems to have pushed the line count up :smile:
+
+__Update:__ The winning solution squeezed the book down to `21162` rows, cool!
